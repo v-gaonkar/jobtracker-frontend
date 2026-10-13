@@ -1,0 +1,64 @@
+/* Covers the ENTIRE viewport (rarely what you want if sidebar is static) */
+.buffer-fullpage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 50;
+}
+
+/* Covers only its nearest positioned ancestor — use this inside <main className="content"> */
+.buffer-content-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 10;
+}
+
+/* Sits inline within normal document flow, no overlay */
+.buffer-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    padding: 40px 0;
+}
+
+.buffer-svg {
+    width: 44px;
+    height: 44px;
+    animation: buffer-rotate 1.6s linear infinite;
+}
+
+.buffer-circle {
+    stroke: #3b82f6;
+    stroke-linecap: round;
+    stroke-dasharray: 90, 150;
+    animation: buffer-dash 1.4s ease-in-out infinite;
+}
+
+.buffer-label {
+    font-size: 13px;
+    color: #64748b;
+}
+
+@keyframes buffer-rotate {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes buffer-dash {
+    0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+    50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+    100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+}

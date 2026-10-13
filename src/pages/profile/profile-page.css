@@ -1,0 +1,223 @@
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.profile-content {
+  max-width: 860px;
+}
+
+.profile-heading h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.profile-heading p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.profile-card {
+  overflow: hidden;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.profile-card-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.profile-card-header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile-large-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, #818cf8, var(--brand));
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile-summary strong {
+  display: block;
+  font-size: 15px;
+}
+
+.profile-summary span {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+  padding: 24px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.profile-field label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.profile-value {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.profile-edit-fields[hidden],
+.profile-view-fields[hidden] {
+  display: none;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 24px 24px;
+}
+
+.notification-list {
+  padding: 4px 24px 10px;
+}
+
+.notification-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.notification-row:last-child {
+  border-bottom: 0;
+}
+
+.notification-row strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.notification-row span {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.toggle {
+  width: 40px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 11px;
+  background: var(--border-subtle);
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: left 0.15s ease;
+}
+
+.toggle.is-on {
+  background: var(--brand);
+}
+
+.toggle.is-on::after {
+  left: 21px;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 188px;
+  }
+
+  .content {
+    padding: 24px 18px;
+  }
+
+  .profile-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-field.full-width {
+    grid-column: auto;
+  }
+
+  .profile-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
