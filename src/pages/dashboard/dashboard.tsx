@@ -7,6 +7,7 @@ import "./dashboard.css";
 
 interface DashboardData {
     applicationCount?: number;
+    totalApplications?: number;
     statusBreakdown?: Record<string, number>;
     upcomingInterviewCount?: number;
     staleApplicationCount?: number;
@@ -90,7 +91,7 @@ export function DashboardPage() {
                 <div className="stat-card-grid">
                     <div className="stat-card">
                         <span className="stat-label">Total Applications</span>
-                        <span className="stat-value">{data.applicationCount ?? 0}</span>
+                        <span className="stat-value">{data.totalApplications ?? 0}</span>
                     </div>
                     <div className="stat-card">
                         <span className="stat-label">Upcoming Interviews (7 days)</span>
