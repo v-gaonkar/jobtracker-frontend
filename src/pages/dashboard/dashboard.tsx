@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api/axiosInstance";
 import { SidebarNav } from "../components/sidebar-nav";
+import { BufferLoader } from "../components/common/BufferingLoader";
 import { PieChart, Pie, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import "./dashboard.css";
 
@@ -23,7 +24,7 @@ const STATUS_COLORS: Record<string, string> = {
 
 export function DashboardPage() {
     const [data, setData] = useState<DashboardData | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -47,7 +48,7 @@ export function DashboardPage() {
             <div className="app-shell">
                 <SidebarNav />
                 <main className="content">
-                    <div className="form-help">Loading dashboard...</div>
+                    <BufferLoader variant="contentOverlay" label="Loading dashboard..." />
                 </main>
             </div>
         );

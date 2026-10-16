@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api/axiosInstance";
 import { SidebarNav } from "../components/sidebar-nav";
+import { BufferLoader } from "../components/common/BufferingLoader";
 import './profile-page.css';
 import axios from "axios";
 
@@ -16,7 +17,7 @@ interface ProfileData {
 export function ProfilePage() {
     const [profile, setProfile] = useState<ProfileData | null>(null);
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     const [username, setUsername] = useState<string>('');
@@ -69,6 +70,8 @@ export function ProfilePage() {
         } catch (err: unknown) {
             if (axios.isAxiosError(err) && err.response) {
                 setError(err.response.data.message || 'Failed to save changes.');
+            } else {
+                setError('Could not reach the server. Please try again.');
             }
         } finally {
             setLoading(false);
@@ -92,7 +95,7 @@ export function ProfilePage() {
             <div className="app-shell">
                 <SidebarNav />
                 <main className="content profile-content">
-                    <div className="form-help">Loading profile...</div>
+                    <BufferLoader variant="contentOverlay" label="Loading profile..." />
                 </main>
             </div>
         );
